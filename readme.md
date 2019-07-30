@@ -167,8 +167,8 @@ PyAudio
 ## 运行
 
 需要更新stt_tts下的appid ak sk，理论上就可以在hotword下
-的try_again_detect.py直接运行就行。
-默认的唤醒词是smart mirror
+的try_again_detect.py直接运行就行。实际上可能需要安装一些库
+大家最好就是看看上面的过程。默认的唤醒词是smart mirror
 
 本项目主要的目的在于给大家一个手动制作一个智能音箱的示例
 如果真的想要实用，建议使用本文最后的
