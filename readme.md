@@ -1,5 +1,9 @@
 # 智能助手 Try Again
 
+## 注意
+  尽量先看完整个介绍再动手，过些天会有相关的制作过程的教学
+  视频上传，目前还未处理完。
+
 ## 思路
 ### 唤醒模块
 
@@ -159,6 +163,19 @@ PyAudio
 ### 语音播放模块
 
     sudo pip3 install playsound
+
+## 运行
+
+需要更新stt_tts下的appid ak sk，理论上就可以在hotword下
+的try_again_detect.py直接运行就行。
+默认的唤醒词是smart mirror
+
+本项目主要的目的在于给大家一个手动制作一个智能音箱的示例
+如果真的想要实用，建议使用本文最后的
+[Wukong](https://github.com/wzpan/wukong-robot)项目
+
+本项目还有对应的教学视频，目前还未对一些秘钥进行打码，所以暂未
+上传，之后将免费给大家。
 
 
 ## 相关物
