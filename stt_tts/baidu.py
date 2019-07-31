@@ -4,8 +4,8 @@ import time
 """ 你的 APPID AK SK """
 APP_ID = '11684493'
 API_KEY = 'XYShi1grKEeqssWISnhr3EupVLLliChi'
-# SECRET_KEY = '***************************'
-SECRET_KEY = '18XEgGeDdWfHKZ8lUbsZLynRzQOtwpSN'
+SECRET_KEY = '***************************'
+
 
 # 由于公开的秘钥不好，所以不给
 client = AipSpeech(APP_ID, API_KEY, SECRET_KEY)
