@@ -42,16 +42,20 @@ def get_result(question, session_id):
     except:
         return "哦哦，我卡住了", None
     if content:
-        print(content)
+        # print(content)
         result = content['result']
-        print(result)
+        # print(result)
         session_id = result['session_id']
-        print(session_id)
+        # print(session_id)
         response = result['response_list'][0]
-        print(response)
+        # print(response)
         action_list = response['action_list']
-        action = action_list[random.randint(0, len(action_list))]
-        print(action)
+        l = len(action_list)
+        # print(l)
+        r_int = random.randint(0, l - 1)
+        # print(r_int)
+        action = action_list[r_int]
+        # print(action)
         say = action['say']
         print(say)
         return say, session_id

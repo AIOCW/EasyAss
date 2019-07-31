@@ -9,20 +9,43 @@ from tuling.baidu_robot import get_result
 from playsound import playsound
 
 interrupted = False
+session_id = ""
+stop_key_words = ['不聊了', '你歇着吧', '我走了', '我不想聊了']
 
 
 def audioRecorderCallback(fname):
+    global session_id
+    flag_m = 0
     print("converting audio to text")
-    print(fname)
     sentence = rec_speak_to_text(fname)
-    # robot_answer = get_response(sentence)
-    robot_answer, session_id = get_result(sentence, "")
-    print(robot_answer)
-    robot_answer_fname = text_to_speak(robot_answer)
-    print(robot_answer_fname)
+    if isinstance(sentence, int):
+        if sentence == 1:
+            robot_answer_fname = text_to_speak("网络错误，请稍后重试。")
+        elif sentence == 0:
+            if session_id == "":
+                robot_answer_fname = text_to_speak("你喊我咋啥也不说呢。")
+            else:
+                robot_answer_fname = text_to_speak("你怎么突然不说话了呢，那我也不理你了。")
+    else:
+        flag_end = 0
+        for one_stop_key_word in stop_key_words:
+            if one_stop_key_word in sentence:
+                flag_end = 1
+                break
+        if flag_end == 1:
+            robot_answer_fname = text_to_speak("那拜拜咯！下回再聊，你早找我哦，我会想你的。")
+        else:
+            # robot_answer = get_response(sentence)
+            robot_answer, session_id = get_result(sentence, session_id)
+            robot_answer_fname = text_to_speak(robot_answer)
+            flag_m = 1
     playsound(robot_answer_fname)
+    print(fname)
+    print(robot_answer_fname)
     os.remove(fname)
     os.remove(robot_answer_fname)
+
+    return flag_m
 
 
 

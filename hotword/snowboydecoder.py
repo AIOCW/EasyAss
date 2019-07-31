@@ -106,6 +106,8 @@ class HotwordDetector(object):
             sensitivity = [sensitivity]
         model_str = ",".join(decoder_model)
 
+        self.recordedData = []
+
         self.detector = snowboydetect.SnowboyDetect(
             resource_filename=resource.encode(), model_str=model_str.encode())
         self.detector.SetAudioGain(audio_gain)
@@ -129,8 +131,8 @@ class HotwordDetector(object):
               interrupt_check=lambda: False,
               sleep_time=0.03,
               audio_recorder_callback=None,
-              silent_count_threshold=15,
-              recording_timeout=100):
+              silent_count_threshold=6,
+              recording_timeout=58):
         """
         Start the stt_tts detector. For every `sleep_time` second it checks the
         audio buffer for triggering keywords. If detected, then call
@@ -207,24 +209,23 @@ class HotwordDetector(object):
 
             #small state machine to handle recording of phrase after keyword
             if state == "PASSIVE":
-                if status > 0: #key word found
+                if status > 0: # key word found
                     self.recordedData = []
-                    self.recordedData.append(data)
+                    # self.recordedData.append(data)
                     silentCount = 0
                     recordingCount = 0
                     message = "Keyword " + str(status) + " detected at time: "
-                    message += time.strftime("%Y-%m-%d %H:%M:%S",
-                                         time.localtime(time.time()))
+                    message += time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(time.time()))
                     logger.info(message)
                     callback = detected_callback[status-1]
                     if callback is not None:
                         callback()
-
                     if audio_recorder_callback is not None:
                         state = "ACTIVE"
                     continue
 
             elif state == "ACTIVE":
+                # print('--------------------------------')
                 stopRecording = False
                 if recordingCount > recording_timeout:
                     stopRecording = True
@@ -238,8 +239,18 @@ class HotwordDetector(object):
 
                 if stopRecording == True:
                     fname = self.saveMessage()
-                    audio_recorder_callback(fname)
-                    state = "PASSIVE"
+                    flag_m = audio_recorder_callback(fname)
+                    if flag_m == 1:
+                        print("循环对话。。。")
+                        print('recording audio...', end='', flush=True)
+                        self.recordedData = []
+                        silentCount = 0
+                        recordingCount = 0
+                        time.sleep(1)
+                        play_audio_file()
+
+                    else:
+                        state = "PASSIVE"
                     continue
 
                 recordingCount = recordingCount + 1
