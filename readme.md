@@ -213,3 +213,15 @@ PyAudio
 [Wukong](https://github.com/wzpan/wukong-robot)
 
 [百度的对话机器人](https://ai.baidu.com/docs#/UNIT-v2-service-API/top)
+
+## 所有权声明
+
+1. 本项目所有外部资源来源于网络，如有问题，请联系我删除。
+2. 本项目仅可用于个人DIY使用，禁止用于商业目的。
+3. 本项目使用后造成的后果，本人一概不负责任。
+4. 本项目立项目标是在于告诉大家怎么去建立这样一个系统，如果只是想搭建一个基于树莓派
+等的智能系统，建议使用文中提到的WuKong项目，该项目由腾讯工程师建立。远远强于我这个
+本科生。
+5. 关于捐赠，若果真的想给就在B站投个币吧，或者以下二维码
+
+![二维码](https://github.com/Yaque/FriutShop/blob/master/show/money/zhifubao_hongbao.jpg)
