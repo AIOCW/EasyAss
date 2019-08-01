@@ -26,6 +26,7 @@ def audioRecorderCallback(fname):
                 robot_answer_fname = text_to_speak("你喊我咋啥也不说呢。")
             else:
                 robot_answer_fname = text_to_speak("你怎么突然不说话了呢，那我也不理你了。")
+                session_id = ""
     else:
         flag_end = 0
         for one_stop_key_word in stop_key_words:
@@ -34,14 +35,15 @@ def audioRecorderCallback(fname):
                 break
         if flag_end == 1:
             robot_answer_fname = text_to_speak("那拜拜咯！下回再聊，你早找我哦，我会想你的。")
+            session_id = ""
         else:
             # robot_answer = get_response(sentence)
             robot_answer, session_id = get_result(sentence, session_id)
             robot_answer_fname = text_to_speak(robot_answer)
             flag_m = 1
     playsound(robot_answer_fname)
-    print(fname)
-    print(robot_answer_fname)
+    # print(fname)
+    # print(robot_answer_fname)
     os.remove(fname)
     os.remove(robot_answer_fname)
 

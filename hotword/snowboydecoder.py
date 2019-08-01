@@ -54,7 +54,7 @@ class RingBuffer(object):
         return tmp
 
 
-def play_audio_file(fname=DETECT_DING):
+def play_audio_file(fname=DETECT_DONG):
     """Simple callback function to play a wave file. By default it plays
     a Ding sound.
 
@@ -124,14 +124,13 @@ class HotwordDetector(object):
         if len(sensitivity) != 0:
             self.detector.SetSensitivity(sensitivity_str.encode())
 
-        self.ring_buffer = RingBuffer(
-            self.detector.NumChannels() * self.detector.SampleRate() * 5)
+        self.ring_buffer = RingBuffer(self.detector.NumChannels() * self.detector.SampleRate() * 5)
 
     def start(self, detected_callback=play_audio_file,
               interrupt_check=lambda: False,
               sleep_time=0.03,
               audio_recorder_callback=None,
-              silent_count_threshold=6,
+              silent_count_threshold=10,
               recording_timeout=58):
         """
         Start the stt_tts detector. For every `sleep_time` second it checks the
@@ -241,12 +240,13 @@ class HotwordDetector(object):
                     fname = self.saveMessage()
                     flag_m = audio_recorder_callback(fname)
                     if flag_m == 1:
-                        print("循环对话。。。")
-                        print('recording audio...', end='', flush=True)
+                        logger.info("进入循环对话。。。")
                         self.recordedData = []
                         silentCount = 0
                         recordingCount = 0
-                        time.sleep(1)
+                        # time.sleep(1)
+                        self.ring_buffer.get()
+                        # 我们能发现这个清空缓存的方法比睡眠有效
                         play_audio_file()
 
                     else:
