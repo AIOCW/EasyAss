@@ -241,6 +241,7 @@ class HotwordDetector(object):
                     flag_m = audio_recorder_callback(fname)
                     if flag_m == 1:
                         logger.info("进入循环对话。。。")
+                        print('recording audio...', end='', flush=True)
                         self.recordedData = []
                         silentCount = 0
                         recordingCount = 0

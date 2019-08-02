@@ -5,8 +5,10 @@ import os
 from stt_tts.baidu import rec_speak_to_text, text_to_speak
 from tuling.tuling123 import get_response
 from tuling.baidu_robot import get_result
-# from mouth.play import play_audio_file
-from playsound import playsound
+
+from mouth.play import play_audio_file_playsound
+from mouth.play import play_audio_file_change_to_mp3
+from mouth.play import play_audio_file_pygame
 
 interrupted = False
 session_id = ""
@@ -41,7 +43,7 @@ def audioRecorderCallback(fname):
             robot_answer, session_id = get_result(sentence, session_id)
             robot_answer_fname = text_to_speak(robot_answer)
             flag_m = 1
-    playsound(robot_answer_fname)
+    play_audio_file_pygame(robot_answer_fname)
     # print(fname)
     # print(robot_answer_fname)
     os.remove(fname)
