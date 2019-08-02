@@ -1,14 +1,21 @@
+# import sys
+# sys.path.append("你的Ass的目录")
+# print(sys.path)
+# 以上代码仅需在树莓派环境部署时使用
+
 from hotword import snowboydecoder
 import signal
 import os
 
-from stt_tts.baidu import rec_speak_to_text, text_to_speak
+from stt_tts.baidu import rec_speak_to_text
+from stt_tts.baidu_tts_wav import text_to_speak
 from tuling.tuling123 import get_response
 from tuling.baidu_robot import get_result
 
 from mouth.play import play_audio_file_playsound
 from mouth.play import play_audio_file_change_to_mp3
 from mouth.play import play_audio_file_pygame
+from mouth.play import play_wave_pyaudio
 
 interrupted = False
 session_id = ""
@@ -43,7 +50,7 @@ def audioRecorderCallback(fname):
             robot_answer, session_id = get_result(sentence, session_id)
             robot_answer_fname = text_to_speak(robot_answer)
             flag_m = 1
-    play_audio_file_pygame(robot_answer_fname)
+    play_audio_file_playsound(robot_answer_fname)
     # print(fname)
     # print(robot_answer_fname)
     os.remove(fname)
@@ -72,6 +79,7 @@ def interrupt_callback():
 #     sys.exit(-1)
 
 # model = sys.argv[1]
+
 model = "resources/models/smart_mirror.umdl"
 
 # capture SIGINT signal, e.g., Ctrl+C
