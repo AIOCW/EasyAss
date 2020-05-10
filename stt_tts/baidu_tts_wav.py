@@ -1,5 +1,4 @@
 # coding=utf-8
-import sys
 import json
 import time
 
@@ -9,9 +8,9 @@ from urllib.error import URLError
 from urllib.parse import urlencode
 from urllib.parse import quote_plus
 
-API_KEY = '4E1BG9lTnlSeIf1NQFlrSq6h'
-SECRET_KEY = '544ca4657ba8002e3dea3ac2f5fdd241'
-ACCESS_TOKEN = '24.28cff53af4acb2cf08649af5802eac0e.2592000.1567086565.282335-16920155'
+API_KEY = 'XYShi1grKEeqssWISnhr3EupVLLliChi'
+SECRET_KEY = '18XEgGeDdWfHKZ8lUbsZLynRzQOtwpSN'
+ACCESS_TOKEN = '24.bc7adccf1af4164d03330a8438cc6b5a.2592000.1591638390.282335-11684493'
 # 发音人选择, 基础音库：0为度小美，1为度小宇，3为度逍遥，4为度丫丫，
 # 精品音库：5为度小娇，103为度米朵，106为度博文，110为度小童，111为度小萌，默认为度小美
 PER = 111
@@ -71,7 +70,7 @@ def fetch_token():
 """  TOKEN end """
 
 
-def text_to_speak(text):
+def text_to_speak(text, save_filename=None):
     token = ACCESS_TOKEN
     tex = quote_plus(text)  # 此处TEXT需要两次urlencode
     print("AAAAAAAAAA" + tex)
@@ -94,8 +93,8 @@ def text_to_speak(text):
         print('asr http response http code : ' + str(err.code))
         result_str = err.read()
         has_error = True
-
-    save_filename = '../temp/baidu' + str(int(time.time())) + FORMAT
+    if save_filename is None:
+        save_filename = '../temp/baidu' + str(int(time.time())) + FORMAT
     save_file = "error.txt" if has_error else save_filename
     with open(save_file, 'wb') as of:
         of.write(result_str)
@@ -109,5 +108,6 @@ def text_to_speak(text):
 
 
 if __name__ == '__main__':
+    # fetch_token()
     fname = text_to_speak("网络错误，请稍后重试。")
     print(fname)

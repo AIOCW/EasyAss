@@ -130,8 +130,8 @@ class HotwordDetector(object):
               interrupt_check=lambda: False,
               sleep_time=0.03,
               audio_recorder_callback=None,
-              silent_count_threshold=10,
-              recording_timeout=58):
+              silent_count_threshold=9,
+              recording_timeout=30):
         """
         Start the stt_tts detector. For every `sleep_time` second it checks the
         audio buffer for triggering keywords. If detected, then call

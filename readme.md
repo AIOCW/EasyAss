@@ -220,6 +220,12 @@ PyAudio
 
 [百度的对话机器人](https://ai.baidu.com/docs#/UNIT-v2-service-API/top)
 
+[开机自启功能](https://www.jianshu.com/p/86adb6d5347b/)
+
+[WiFi热点功能](https://github.com/oblique/create_ap)
+[WiFi热点功能1](https://howtoraspberrypi.com/create-a-wi-fi-hotspot-in-less-than-10-minutes-with-pi-raspberry/)
+[WiFi热点功能2](https://blog.csdn.net/rothschildxiaobo/article/details/84638585)
+
 ## 所有权声明
 
 1. 本项目所有外部资源来源于网络，如有问题，请联系我删除。

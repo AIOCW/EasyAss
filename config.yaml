@@ -1,0 +1,8 @@
+# 程序Ass的目录位置
+HOME_PATH: /home/yaque/Ass
+
+# 百度API调用时使用的相关秘钥
+BaiDu:
+  APP_ID: 16920155
+  API_KEY: CFGN1RwoBAu3xgHZd1BAXm22
+  SECRET_KEY: bUSVaa3ZBpf1y2uwTIVU47fxI3M0mGie

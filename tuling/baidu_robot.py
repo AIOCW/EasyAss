@@ -22,7 +22,7 @@ import urllib.request
 
 headers = {'Content-Type':'application/json'}
 # access_token = content['access_token']
-access_token = '24.28cff53af4acb2cf08649af5802eac0e.2592000.1567086565.282335-16920155'
+access_token = '24.72ea80158526231036038859a29adfbe.2592000.1591639562.282335-16920155'
 print(access_token)
 
 
@@ -42,7 +42,7 @@ def get_result(question, session_id):
     except:
         return "哦哦，我卡住了", None
     if content:
-        # print(content)
+        print(content)
         result = content['result']
         # print(result)
         session_id = result['session_id']
