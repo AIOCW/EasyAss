@@ -1,3 +1,7 @@
+import sys
+# # sys.path.append("你的Ass的目录")
+sys.path.append("/home/yaque/Ass")
+
 from stt_tts.baidu_tts_wav import text_to_speak
 def generate_local_tips():
     local_sentences = ['net_error: 网络连接，错误请稍后重试，或检查网络连接。',

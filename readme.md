@@ -97,9 +97,44 @@ PyAudio
 系统要退出循环聊天
 
 
+## 运行
 
+    git clone -b dev https://github.com/Yaque/Ass.git
+注意切换到dev分之
 
-## 开始手动配置
+    sudo apt-get install python3-pyaudio sox
+    pip3 list
+
+如果pip3未安装需要安装
+    
+    sudo apt install python3-pip
+
+    sudo pip3 install pyaudio
+    
+    sudo pip3 install pygame
+    
+    sudo pip3 install baidu-aip
+    
+    
+需要更新stt_tts下的appid ak sk，进入进入temp 运行init_project.py
+
+    python3 init_project.py
+    
+理论上就可以Ass/brain目录下输入即可
+
+    python3 main.py
+
+直接运行就行。实际上可能需要安装一些库
+大家最好就是看看上面的过程。默认的唤醒词是smart mirror
+
+本项目主要的目的在于给大家一个手动制作一个智能音箱的示例
+如果真的想要实用，建议使用本文最后的
+[Wukong](https://github.com/wzpan/wukong-robot)项目
+
+## 学习开始手动配置
+
+如果是第一尝试，建议在Ubuntu18.04（推荐）、16.04、20.04等版本尝试，不推荐直接
+在树莓派上运行，如果希望用于日常使用，建议去看《wukong》
 
 ### 唤醒模块
 
@@ -107,13 +142,13 @@ PyAudio
 
     sudo apt-get install python-pyaudio python3-pyaudio sox
     
-    sudo pip install pyaudio
-    
     sudo pip3 install pyaudio
     
     cd 你的项目根目录/
     
     mkdir SBCompile
+    
+    cd SBCompile
     
     wget http://downloads.sourceforge.net/swig/swig-3.0.10.tar.gz
     
@@ -190,16 +225,6 @@ PyAudio
 
     sudo pip3 install playsound
 
-## 运行
-
-需要更新stt_tts下的appid ak sk，理论上就可以在hotword下
-的try_again_detect.py直接运行就行。实际上可能需要安装一些库
-大家最好就是看看上面的过程。默认的唤醒词是smart mirror
-
-本项目主要的目的在于给大家一个手动制作一个智能音箱的示例
-如果真的想要实用，建议使用本文最后的
-[Wukong](https://github.com/wzpan/wukong-robot)项目
-
 本项目还有对应的教学视频，目前还未对一些秘钥进行打码，所以暂未
 上传，之后将免费给大家。
 
@@ -229,7 +254,7 @@ PyAudio
 ## 所有权声明
 
 1. 本项目所有外部资源来源于网络，如有问题，请联系我删除。
-2. 本项目仅可用于个人DIY使用，禁止用于商业目的。
+2. 本项目仅可用于个人DIY学习使用，禁止用于商业目的。
 3. 本项目使用后造成的后果，本人一概不负责任。
 4. 本项目立项目标是在于告诉大家怎么去建立这样一个系统，如果只是想搭建一个基于树莓派
 等的智能系统，建议使用文中提到的WuKong项目，该项目由腾讯工程师建立。远远强于我这个
